@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello world!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Outfit", system-ui, sans-serif;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(120, 80, 255, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 100, 180, 0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    h1 {
+      position: relative;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-align: center;
+      background: linear-gradient(90deg, #fff 0%, #c4b5fd 40%, #f9a8d4 70%, #fff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 4s ease-in-out infinite;
+      text-shadow: 0 0 80px rgba(196, 181, 253, 0.4);
+    }
+
+    h1::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      margin: 1.25rem auto 0;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      opacity: 0.8;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% center; }
+      50% { background-position: 200% center; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello world!</h1>
+</body>
+</html>
