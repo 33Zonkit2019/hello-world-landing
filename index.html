@@ -3,120 +3,475 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello world!</title>
+  <meta name="description" content="Памяти Егора — парня, которому мечталось поступить в МГУ, но судьба распорядилась иначе.">
+  <title>Егор — Память о мечте</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&display=swap" rel="stylesheet">
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
-      font-family: "Outfit", system-ui, sans-serif;
-      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-      overflow: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 80%, rgba(120, 80, 255, 0.25) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 100, 180, 0.2) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    h1 {
-      position: relative;
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      text-align: center;
-      background: linear-gradient(90deg, #fff 0%, #c4b5fd 40%, #f9a8d4 70%, #fff 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shimmer 4s ease-in-out infinite;
-      text-shadow: 0 0 80px rgba(196, 181, 253, 0.4);
-    }
-
-    h1::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 4px;
-      margin: 1.25rem auto 0;
-      border-radius: 2px;
-      background: linear-gradient(90deg, #8b5cf6, #ec4899);
-      opacity: 0.8;
-    }
-
-    @keyframes shimmer {
-      0%, 100% { background-position: 0% center; }
-      50% { background-position: 200% center; }
-    }
-
-    .counter-btn {
-      position: relative;
-      padding: 0.9rem 2rem;
-      border: none;
-      border-radius: 999px;
-      font-family: inherit;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-      cursor: pointer;
-      background: linear-gradient(135deg, #8b5cf6, #ec4899);
-      box-shadow: 0 8px 32px rgba(139, 92, 246, 0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .counter-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(236, 72, 153, 0.45);
-    }
-
-    .counter-btn:active {
-      transform: translateY(0);
-    }
-
-    .counter-btn span {
-      display: inline-block;
-      min-width: 1.5ch;
-      margin-left: 0.35rem;
-      padding: 0.1rem 0.5rem;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.2);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>Hello world!</h1>
-  <button class="counter-btn" id="counterBtn" type="button">
-    Click me <span id="counter">0</span>
-  </button>
-  <script>
-    const btn = document.getElementById("counterBtn");
-    const counter = document.getElementById("counter");
-    let count = 0;
 
-    btn.addEventListener("click", () => {
-      count += 1;
-      counter.textContent = count;
-    });
-  </script>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="candles" id="candles" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">
+        <span class="logo__mark">Е</span>
+        <span class="logo__text">
+          <span class="logo__name">Егор</span>
+          <span class="logo__sub">2006 — ∞</span>
+        </span>
+      </a>
+
+      <nav class="nav">
+        <a href="#story" class="nav__link">История</a>
+        <a href="#saga" class="nav__link">Сага</a>
+        <a href="#gallery" class="nav__link">Фото</a>
+        <a href="#villain" class="nav__link">Псевдожена</a>
+        <a href="#finale" class="nav__link">Финал</a>
+      </nav>
+
+      <button class="btn btn--ghost" id="candleBtn" type="button">Зажечь свечу</button>
+
+      <button class="burger" id="burger" type="button" aria-label="Открыть меню">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#story" class="mobile-nav__link">История</a>
+    <a href="#saga" class="mobile-nav__link">Сага</a>
+    <a href="#gallery" class="mobile-nav__link">Фото</a>
+    <a href="#villain" class="mobile-nav__link">Псевдожена</a>
+    <a href="#finale" class="mobile-nav__link">Финал</a>
+    <button class="btn btn--primary btn--full" id="candleBtnMobile" type="button">Зажечь свечу</button>
+  </nav>
+
+  <main>
+
+    <section class="hero" id="hero">
+      <div class="hero__bg">
+        <div class="hero__glow hero__glow--left"></div>
+        <div class="hero__glow hero__glow--right"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content reveal">
+          <p class="hero__epitaph">«У него ничего не получится» — Т. Говнадьевна</p>
+
+          <h1 class="hero__title">
+            Егор.<br>
+            <span class="hero__title-accent">Мечтал о МГУ.</span><br>
+            Остался на улице.
+          </h1>
+
+          <p class="hero__lead">
+            18 лет. Очки, мечта и три оценки, которые решили всё.
+            Это история о том, как один классный руководитель сломала целую жизнь —
+            и как голуби на площади стали единственными соперниками, которых он ещё мог победить.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#story" class="btn btn--primary">Читать историю</a>
+            <a href="#gallery" class="btn btn--outline">Смотреть фото</a>
+          </div>
+
+          <div class="hero__counter">
+            <span class="hero__counter-num" id="candleCount">0</span>
+            <span class="hero__counter-label">свечей зажжено в память</span>
+          </div>
+        </div>
+
+        <div class="hero__portrait reveal reveal--delay-1">
+          <div class="hero__frame">
+            <img
+              src="images/egor-1.png"
+              alt="Егор — главное фото"
+              width="520"
+              height="650"
+              loading="eager"
+            >
+          </div>
+          <div class="hero__frame-caption">Егор, 18 лет. Ещё верил в себя.</div>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>↓</span>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Хроника падения</span>
+          <h2 class="section__title">Как всё было</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__year">2024</div>
+            <h3 class="timeline__title">Мечта о МГУ</h3>
+            <p class="timeline__text">
+              Егор — обычный парень 18 лет. Очки, учёба, планы. Мечтал поступить в
+              <strong>Московский государственный университет</strong>. Готовился, верил, старался.
+              Всё казалось возможным.
+            </p>
+          </article>
+
+          <article class="timeline__item reveal reveal--delay-1">
+            <div class="timeline__dot timeline__dot--red"></div>
+            <div class="timeline__year">2024–2025</div>
+            <h3 class="timeline__title">Татьяна Говнадьевна</h3>
+            <p class="timeline__text">
+              Классный руководитель, которую одноклассники прозвали <em>псевдоженой</em>.
+              Всячески занижала оценки, не пускала к экзаменам, шептала на каждом родительском:
+              «У него <strong>ничего не получится</strong>». И, кажется, добилась своего.
+            </p>
+          </article>
+
+          <article class="timeline__item reveal reveal--delay-2">
+            <div class="timeline__dot timeline__dot--dark"></div>
+            <div class="timeline__year">2025</div>
+            <h3 class="timeline__title">Провал</h3>
+            <p class="timeline__text">
+              В МГУ не поступил. Не потому что не умел — потому что система и одна женщина
+              с красной помадой решили иначе. Мечта рассыпалась, как тетрадь после дождя.
+            </p>
+          </article>
+
+          <article class="timeline__item reveal reveal--delay-3">
+            <div class="timeline__dot timeline__dot--amber"></div>
+            <div class="timeline__year">2025</div>
+            <h3 class="timeline__title">Он не сдался</h3>
+            <p class="timeline__text">
+              Егор просто так не хотел сдаваться. Он решил дать отпор этой шкуре —
+              Татьяне. Но для этого нужен был союзник. Или авторитет.
+              <a href="#saga" class="timeline__link">Дальше — сага →</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--saga" id="saga">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Эпическая сага</span>
+          <h2 class="section__title">Битва за честь Егора</h2>
+          <p class="section__subtitle">10 секунд, которые длились вечность</p>
+        </div>
+
+        <article class="saga-chapter reveal">
+          <div class="saga-chapter__img">
+            <img src="images/scene-1-pylon.png" alt="Егор едет к Димасу Черных" loading="lazy">
+            <span class="saga-chapter__badge">Глава I</span>
+          </div>
+          <div class="saga-chapter__body">
+            <h3 class="saga-chapter__title">Путь к авторитету</h3>
+            <p>
+              Егор не стал терпеть унижения. Он поехал к главному авторитету своего района —
+              <strong>Димасу Черных</strong>. Легендарному. Непобедимому. Тому, кто однажды
+              залез на ЛЭП и не сломался.
+            </p>
+            <p class="saga-chapter__note">Но...</p>
+          </div>
+        </article>
+
+        <article class="saga-chapter saga-chapter--reverse reveal">
+          <div class="saga-chapter__img">
+            <img src="images/scene-2-orle.png" alt="Димас на петушином орле" loading="lazy">
+            <span class="saga-chapter__badge">Глава II</span>
+          </div>
+          <div class="saga-chapter__body">
+            <h3 class="saga-chapter__title">Перепалка на орле</h3>
+            <p>
+              Между ними началась перепалка. Димас залез на авторского
+              <em>петушиного орла</em> и начал орать на Егора сверху.
+              Егор же держал свою оппозицию — как <strong>тёмный мечник</strong>.
+            </p>
+            <p>
+              В итоге Егор проиграл в битве и был вынужден бежать.
+              Орёл победил. Мечник — нет.
+            </p>
+          </div>
+        </article>
+
+        <div class="saga-roster reveal">
+          <h3 class="saga-roster__title">Участники конфликта</h3>
+          <div class="saga-roster__grid">
+            <figure class="roster-card">
+              <img src="images/dimas.png" alt="Димас Черных">
+              <figcaption>
+                <strong>Димас Черных</strong>
+                <span>Авторитет района · теневое клонирование</span>
+              </figcaption>
+            </figure>
+            <figure class="roster-card">
+              <img src="images/georgik.png" alt="Джорджик">
+              <figcaption>
+                <strong>Джорджик</strong>
+                <span>Древний плесневелый друг · Шаринган</span>
+              </figcaption>
+            </figure>
+            <figure class="roster-card">
+              <img src="images/vedralyu-buyny.png" alt="Ведраля буйный">
+              <figcaption>
+                <strong>Ведраля Буйный</strong>
+                <span>Союзник Димаса · БКБ</span>
+              </figcaption>
+            </figure>
+            <figure class="roster-card">
+              <img src="images/vedralyu-genitalyu.png" alt="Ведраля Гениталю">
+              <figcaption>
+                <strong>Ведраля Гениталю</strong>
+                <span>Элита · пал жертвой камикадзе</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <article class="saga-chapter reveal">
+          <div class="saga-chapter__img">
+            <img src="images/georgik.png" alt="Джорджик — древний друг" loading="lazy">
+            <span class="saga-chapter__badge">Глава III</span>
+          </div>
+          <div class="saga-chapter__body">
+            <h3 class="saga-chapter__title">Призыв Джорджика</h3>
+            <p>
+              Егор не стал терпеть поражение. Он позвал своего давнего древнего
+              плесневелого друга — <strong>«Джорджика»</strong>.
+              Они решили выждать момент и напасть на Димаса.
+            </p>
+            <p>
+              Но они не ожидали, что предстоит встретить помимо Димадрика ещё и
+              <strong>Ведралю Буйного</strong>.
+            </p>
+            <p class="saga-chapter__note">И тут началась битва...</p>
+          </div>
+        </article>
+
+        <article class="saga-chapter saga-chapter--reverse reveal">
+          <div class="saga-chapter__img">
+            <img src="images/scene-4-battle.png" alt="Великая битва" loading="lazy">
+            <span class="saga-chapter__badge saga-chapter__badge--battle">Глава IV</span>
+          </div>
+          <div class="saga-chapter__body">
+            <h3 class="saga-chapter__title">Великая битва</h3>
+            <ul class="battle-log">
+              <li><span>Джорджик Маваши</span> заюзал свой <strong>Шаринган</strong> и посадил Ведралю в <strong>Гендзюцу</strong></li>
+              <li><span>Ведраля</span> тоже не промах — ответил <strong>БКБ</strong></li>
+              <li><span>Егор</span> призвал души <strong>Девятихвостых голубей</strong></li>
+              <li><span>Димас</span> заюзал <strong>теневое клонирование</strong></li>
+            </ul>
+            <p>
+              Битва длилась очень много лет. И спустя <strong>10 секунд</strong>
+              Егор одолел <em>Димарика Комарика</em> и сразу же ринулся помогать
+              Мастеру Угвей...
+            </p>
+            <p class="saga-chapter__note">Но... он... не... успел...</p>
+          </div>
+        </article>
+
+        <article class="saga-chapter reveal">
+          <div class="saga-chapter__img">
+            <img src="images/vedralyu-genitalyu.png" alt="Падение Ведрали Гениталю" loading="lazy">
+            <span class="saga-chapter__badge saga-chapter__badge--sacrifice">Глава V</span>
+          </div>
+          <div class="saga-chapter__body">
+            <h3 class="saga-chapter__title">Жертва Маваши</h3>
+            <p>
+              Маваши пожертвовал собой и как <strong>камикадзе</strong> одолел
+              <em>Ведралю Гениталю</em>.
+            </p>
+            <p>
+              Егор тут же принялся оплакивать, слюнявить погибшему Гоше.
+              Но он <strong>не забыл его!!!!</strong>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="gallery">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Галерея памяти</span>
+          <h2 class="section__title">Егор — до и во время</h2>
+          <p class="section__subtitle">Три фото одного человека. Одна сломанная судьба.</p>
+        </div>
+
+        <div class="gallery">
+          <figure class="gallery__item reveal reveal--delay-1">
+            <div class="gallery__img-wrap">
+              <img src="images/egor-1.png" alt="Егор в кафе" loading="lazy">
+            </div>
+            <figcaption class="gallery__caption">
+              <span class="gallery__tag">Кафе</span>
+              Последний раз сидел за столом, а не на лавочке
+            </figcaption>
+          </figure>
+
+          <figure class="gallery__item reveal reveal--delay-2">
+            <div class="gallery__img-wrap">
+              <img src="images/egor-2.png" alt="Егор в кепке" loading="lazy">
+            </div>
+            <figcaption class="gallery__caption">
+              <span class="gallery__tag">Школа</span>
+              Ещё носил кепку и не знал слова «псевдожена»
+            </figcaption>
+          </figure>
+
+          <figure class="gallery__item reveal reveal--delay-3">
+            <div class="gallery__img-wrap">
+              <img src="images/egor-3.png" alt="Егор в классе" loading="lazy">
+            </div>
+            <figcaption class="gallery__caption">
+              <span class="gallery__tag">Кабинет</span>
+              Здесь ему говорили, что он никто. Он ещё не верил.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--villain" id="villain">
+      <div class="container">
+        <div class="villain__inner">
+          <div class="villain__photo-wrap reveal reveal--left">
+            <div class="villain__frame">
+              <img
+                src="images/tatyana.png"
+                alt="Татьяна Говнадьевна"
+                loading="lazy"
+              >
+              <div class="villain__stamp">ВИНОВНА</div>
+            </div>
+          </div>
+
+          <div class="villain__content reveal reveal--right">
+            <span class="section__label section__label--red">Антагонист</span>
+            <h2 class="section__title">Татьяна Мудачиловна</h2>
+            <p class="villain__aka">он же Говнадьевна · псевдожена · классный руководитель</p>
+
+            <blockquote class="villain__quote">
+              «У него ничего не получится.»
+            </blockquote>
+
+            <ul class="villain__crimes">
+              <li>Занижала оценки без объяснений</li>
+              <li>Не пускала к экзаменам и собраниям</li>
+              <li>Убила мечту о МГУ одной фразой</li>
+              <li>Стала псевдоженой — и гордилась этим</li>
+            </ul>
+
+            <p class="villain__note">
+              Если вы видите эту женщину — не поддавайтесь на улыбку.
+              За ней стоят три двойки по русскому и один сломанный парень.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--finale" id="finale">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label section__label--red">Последний бой</span>
+          <h2 class="section__title">Татьяна Дрочиловна</h2>
+          <p class="section__subtitle">Накопив всю ярость во плоти</p>
+        </div>
+
+        <div class="finale__content reveal">
+          <p>
+            Егор, оплакав Джорджика, не сдался. Накопив всю ярость во плоти,
+            он пошёл разбираться к <strong>Татьяне... Дрочиловне...</strong>
+          </p>
+          <p>
+            Но, кароче, не справился.
+          </p>
+          <p class="finale__downfall">
+            Забухал. Спился. Сторчался. Обдрочился.
+          </p>
+          <p>
+            Стал бомжом. Пил пиво. Гонял джунгарика. Дрался с голубями на улице — за ставки.
+          </p>
+        </div>
+
+        <div class="epitaph reveal">
+          <p class="epitaph__main">Жил он мастью, а умер к счастью.</p>
+          <p class="epitaph__sub">Земля тебе бетоном.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="legacy">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Статистика</span>
+          <h2 class="section__title">Наследие Егора</h2>
+          <p class="section__subtitle">Цифры, которые не попали в аттестат</p>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card reveal reveal--delay-1">
+            <div class="stat-card__icon">🎓</div>
+            <div class="stat-card__num" data-target="0">0</div>
+            <div class="stat-card__label">поступлений в МГУ</div>
+          </div>
+          <div class="stat-card reveal reveal--delay-2">
+            <div class="stat-card__icon">🍺</div>
+            <div class="stat-card__num" data-target="847">0</div>
+            <div class="stat-card__label">банок пива (примерно)</div>
+          </div>
+          <div class="stat-card reveal reveal--delay-3">
+            <div class="stat-card__icon">🐦</div>
+            <div class="stat-card__num" data-target="23">0</div>
+            <div class="stat-card__label">побед над голубями</div>
+          </div>
+          <div class="stat-card reveal reveal--delay-4">
+            <div class="stat-card__icon">🐹</div>
+            <div class="stat-card__num" data-target="1">0</div>
+            <div class="stat-card__label">джунгарик (гонял)</div>
+          </div>
+        </div>
+
+        <div class="memorial reveal">
+          <p class="memorial__text">
+            Егор, ты мог бы быть студентом МГУ.<br>
+            Вместо этого ты стал легендой двора.<br>
+            <em>Мы помним. Голуби — тоже.</em>
+          </p>
+          <button class="btn btn--primary" id="memorialBtn" type="button">
+            Зажечь свечу в память
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">
+        &copy; 2025 Памяти Егора. Сделано лохами. Татьяне — отдельный ад.
+      </p>
+      <div class="footer__links">
+        <a href="#story">История</a>
+        <a href="#saga">Сага</a>
+        <a href="#finale">Финал</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
