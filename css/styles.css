@@ -633,6 +633,12 @@ button {
   width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
+  object-position: center center;
+}
+
+.saga-chapter__img--portrait img {
+  aspect-ratio: 3/4;
+  object-position: top center;
 }
 
 .saga-chapter__badge {
